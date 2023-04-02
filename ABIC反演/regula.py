@@ -1,4 +1,6 @@
 import numpy as np
+import numba as nb
+
 
 def Lx(nmodel=(3, 3, 3)):
     """
@@ -15,7 +17,6 @@ def Lx(nmodel=(3, 3, 3)):
     for i in range(zlen):
         for j in range(ylen):
             for k in range(xlen-1):
-                
                 index_x = i*ylen*(xlen-1) + j*(xlen-1) + k
                 index_y = i*ylen*xlen + j*xlen + k
                 ma[index_x, index_y] = -1
@@ -64,7 +65,6 @@ def Lxx(nmodel=(3, 3, 3)):
     for i in range(zlen):
         for j in range(ylen):
             for k in range(xlen-2):
-                
                 index_x = i*ylen*(xlen-2) + j*(xlen-2) + k
                 index_y = i*ylen*xlen + j*xlen + k
                 ma[index_x, index_y] = -1
